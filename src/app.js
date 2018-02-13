@@ -28,9 +28,24 @@
  }
 
  class Square extends React.Component {
+   constructor(props){
+     super(props);
+     this.toggleX = this.toggleX.bind(this);
+     this.state = {
+       value: '1'
+     }
+   }
+   toggleX() {
+     // this.setState({value: 'X'});
+     this.setState(() => {
+       return {
+         value: 'x'
+       }
+     })
+   }
    render(){
      return (
-       <button className="square" onClick={() => {alert(this.props.value)}}>{this.props.value}</button>
+       <button className="square" onClick={this.toggleX}>{this.state.value}</button>
      );
    }
   }
