@@ -14,7 +14,7 @@ class Board extends React.Component {
   //   })
   // }
   handleClick(i) {
-    const squares = this.state.squares;
+    const squares = this.state.squares.slice();
     squares[i] = '0';
     this.setState(() => {
       return {
@@ -52,13 +52,11 @@ class Board extends React.Component {
   }
 }
 
-class Square extends React.Component {
-
-  render(){
+function Square(props)  {
     return (
-      <button className="square" onClick={() => this.props.handleClick()}>{this.props.value}</button>
+      <button className="square" onClick={() => props.handleClick()}>{props.value}</button>
     );
   }
- }
+
 
 ReactDOM.render(<Board />, document.getElementById('app'));
